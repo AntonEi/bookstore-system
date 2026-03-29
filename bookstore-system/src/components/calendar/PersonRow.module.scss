@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+
+.row {
+  display: grid;
+  border-bottom: 1px solid $border-color;
+  height: 60px;
+  position: relative;
+}
+
+.cell {
+  position: relative;
+  border-left: 1px solid $border-color;
+}
+
+.monday {
+  border-left: 2px solid rgba(255,255,255,0.2);
+}
+
+.weekend {
+  background: rgba(255,255,255,0.03);
+}
+
+.todayLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: $color-success;
+  transform: translateX(-50%);
+  opacity: 0.6;
+  pointer-events: none;
+}

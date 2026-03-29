@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  display: grid;
+  border-bottom: 2px solid $border-color;
+  height: 50px;
+  align-items: center;
+}
+
+.cell {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 14px;
+  position: relative;
+  color: $color-text-primary;
+  transition: 0.2s ease;
+}
+
+.today {
+  color: $color-success;
+  font-weight: 700;
+}
+
+.date {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.weekday {
+  font-size: 12px;
+  opacity: 0.7;
+}
+

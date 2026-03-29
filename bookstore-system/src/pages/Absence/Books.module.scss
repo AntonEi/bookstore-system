@@ -1,0 +1,236 @@
+@use '../../styles/variables' as *;
+
+.page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $space-lg;
+    color: $color-text-head;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $space-xl;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+/* BOOK GRID */
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: $space-lg;
+}
+
+/* BOOK CARD */
+
+.card {
+    position: relative;
+
+    background: $color-bg-card;
+    border-radius: $radius-md;
+    padding: $space-lg;
+    border: 1px solid $border-color;
+    box-shadow: $shadow-card;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 140px;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.35),
+        0 0 18px rgba(255, 255, 255, 0.05);
+}
+
+/* TITLE */
+
+.name {
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-primary;
+    line-height: 1.4;
+}
+
+/* COPY TEXT */
+
+.sub {
+    font-size: 13px;
+    color: $color-text-secondary;
+}
+
+/* STATUS BADGE */
+
+.badge {
+    position: absolute;
+
+    bottom: 16px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+
+    color: white;
+}
+
+/* AVAILABLE */
+
+.statusAvailable {
+    background: $color-success;
+
+    box-shadow:
+        0 0 12px rgba($color-success, 0.2),
+        0 0 24px rgba($color-success, 0.1);
+}
+
+/* BORROWED */
+
+.statusBorrowed {
+    background: $color-danger;
+
+    box-shadow:
+        0 0 12px rgba($color-danger, 0.2),
+        0 0 24px rgba($color-danger, 0.1);
+}
+
+/* POPUP */
+
+.popupOverlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.popup {
+    background: $color-bg-card;
+    border-radius: $radius-md;
+    padding: $space-xl;
+    width: 520px;
+
+    box-shadow: $shadow-card;
+}
+
+/* FORM GRID */
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-md;
+    margin-top: $space-md;
+}
+
+/* FORM FIELD */
+
+.formField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formField label {
+    font-size: 13px;
+    color: $color-text-secondary;
+}
+
+.formField select:focus {
+    background: rgb(233, 233, 233);
+}
+
+
+.formField input,
+.formField select {
+    padding: 10px;
+    border-radius: $radius-sm;
+    border: 1px solid $border-color;
+    background: rgb(233, 233, 233);
+    color: black;
+}
+
+/* BUTTONS */
+
+.popupButtons {
+    margin-top: $space-lg;
+
+    display: flex;
+    justify-content: center;
+    gap: $space-md;
+}
+
+.createMenuWrapper {
+    position: relative;
+}
+
+.createMenu {
+    position: absolute;
+    top: 42px;
+    right: 0;
+
+    background: $color-bg-card;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+
+    box-shadow: $shadow-card;
+
+    overflow: hidden;
+    min-width: 160px;
+    color: white;
+    z-index: 50;
+}
+
+.createMenuItem {
+
+    padding: 10px 14px;
+    cursor: pointer;
+
+    font-size: 14px;
+
+}
+
+.createMenuItem:hover {
+
+    background: rgba(255, 255, 255, 0.06);
+
+}
+
+.headerButtons {
+    display: flex;
+    gap: $space-md;
+    align-items: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $space-md;
+    }
+
+    .list {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+}

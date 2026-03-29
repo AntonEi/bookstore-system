@@ -1,0 +1,122 @@
+@use "../../styles/variables" as *;
+
+/* ===== TITLE ===== */
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: $color-text-head;
+  margin-bottom: $space-lg;
+}
+
+/* ===== TOOLBAR ===== */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-lg;
+  margin-bottom: $space-xl;
+  flex-wrap: wrap;
+}
+
+/* grouped sections */
+.leftTools,
+.centerTools,
+.rightTools {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+/* SEARCH */
+.search {
+  padding: 10px 14px;
+  border-radius: $radius-sm;
+  border: 1px solid $border-color;
+  background: #fff;
+  font-size: 14px;
+  min-width: 240px;
+  transition: 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $color-success;
+    box-shadow: 0 0 0 2px rgba($color-success, 0.15);
+  }
+}
+
+/* SELECTS */
+.monthSelect,
+.viewSelect {
+  padding: 8px 12px;
+  border-radius: $radius-sm;
+  border: 1px solid $border-color;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: $color-success;
+  }
+}
+
+/* ===== CALENDAR CONTAINER ===== */
+
+.calendar {
+  display: flex;
+  width: 100%;
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+}
+
+/* ===== LEFT COLUMN ===== */
+
+.left {
+  width: 240px;
+  min-width: 240px;
+  border-right: 1px solid $border-color;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.personHeader {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding-left: $space-lg;
+  font-weight: 600;
+  color: $color-text-primary;
+  border-bottom: 1px solid $border-color;
+}
+
+.personRow {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-left: $space-lg;
+  color: $color-text-primary;
+  border-top: 1px solid $border-color;
+  font-weight: 500;
+}
+
+/* ===== RIGHT SIDE (GRID AREA) ===== */
+
+.right {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: $space-sm;
+}
+
+/* nicer scrollbar */
+.right::-webkit-scrollbar {
+  height: 8px;
+}
+
+.right::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 999px;
+}

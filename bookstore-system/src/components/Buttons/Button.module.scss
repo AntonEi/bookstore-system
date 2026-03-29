@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+
+.button {
+    padding: 10px 16px;
+    border-radius: $radius-sm;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border: none;
+}
+
+/* PRIMARY */
+.primary {
+    background: $color-success;
+    color: $color-bg-primary;
+    border: 1px solid $color-success;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: $color-text-head; // 👈 mörk text
+    }
+}
+
+/* SECONDARY */
+.secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid $color-success;
+    color: $color-bg-primary;
+
+    &:hover {
+        background: $color-success;
+    }
+}
+
+/* OUTLINE (för Admin vy) */
+.outline {
+    background: transparent;
+    border: 1px solid $color-success;
+    color: $color-success;
+
+    &:hover {
+        background: rgba($color-success, 0.1);
+    }
+}
+
+/* optional */
+.fullWidth {
+    width: 100%;
+}
+
+.primaryInCard {
+    background: $color-success;
+    color: $color-text-primary; // vit text
+    border: 1px solid $color-success;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: $color-text-primary;
+    }
+}
+
+.secondaryInCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $color-success;
+  color: $color-text-primary; // 👈 vit text
+
+  &:hover {
+    background: rgba($color-success, 0.15);
+    color: $color-text-primary;
+  }
+}

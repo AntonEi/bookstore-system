@@ -1,0 +1,28 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  display: grid;
+  border-bottom: 1px solid $border-color;
+  font-weight: 600;
+  height: 32px;
+  align-items: center;
+  position: relative;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid transparent;
+  color: $color-text-secondary;
+  font-size: 12px;
+}
+
+.monday {
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.weekLabel {
+  font-weight: 600;
+  color: $color-text-primary;
+}

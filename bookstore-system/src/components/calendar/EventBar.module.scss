@@ -1,0 +1,92 @@
+@use '../../styles/variables' as *;
+
+.bar {
+  position: absolute;
+  top: 8px;
+  height: 36px;
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.normal {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.prelim {
+  opacity: 0.7;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.proposal {
+  background: rgba($color-warning, 0.8);
+  color: #000;
+}
+
+.compact {
+  font-size: 11px;
+}
+
+.default {
+  font-size: 13px;
+}
+
+/* Resize handles */
+
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+}
+
+.handleLeft {
+  left: 0;
+}
+
+.handleRight {
+  right: 0;
+}
+
+.handleBar {
+  width: 2px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+}
+
+/* Tooltip */
+
+.tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 0;
+  background: $color-bg-primary;
+  color: $color-text-primary;
+  padding: 12px;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-card;
+  font-size: 12px;
+  min-width: 220px;
+  z-index: 1000;
+}
+
+.tooltipRow {
+  margin-bottom: 6px;
+}
+
+.tooltipStrong {
+  font-weight: 700;
+}

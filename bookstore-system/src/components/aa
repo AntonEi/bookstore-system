@@ -1,0 +1,177 @@
+// Automatic FlutterFlow imports
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart'; // Imports other custom widgets
+import '/custom_code/actions/index.dart'; // Imports custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+import 'package:flutter/material.dart';
+// Begin custom widget code
+// DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'package:csslib/parser.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:collection/collection.dart';
+
+class PostLinkText extends StatefulWidget {
+  const PostLinkText({
+    super.key,
+    this.width,
+    this.height,
+    required this.message,
+    required this.mentionLinkClick,
+    this.answerName,
+    required this.mentionsList,
+  });
+
+  final double? width;
+  final double? height;
+  final String message;
+  final Future Function(
+    String type,
+    DocumentReference? userRef,
+    DocumentReference? companyRef,
+  ) mentionLinkClick;
+  final String? answerName;
+  final List<MentionDataStruct> mentionsList;
+
+  @override
+  State<PostLinkText> createState() => _PostLinkTextState();
+}
+
+class _PostLinkTextState extends State<PostLinkText> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: widget.width ?? double.infinity,
+      // height: widget.height,
+      child: SelectableLinkify(
+        text: widget.message,
+        options: const LinkifyOptions(looseUrl: true),
+        linkifiers: const [
+          UrlLinkifier(),
+          EmailLinkifier(),
+          MentionLinkifier(),
+        ],
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontSize: 14,
+              color: FlutterFlowTheme.of(context).primaryText,
+              fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
+            ),
+        linkStyle: TextStyle(
+          color: FlutterFlowTheme.of(context).primaryBlue,
+          decoration: TextDecoration.none,
+        ),
+        onOpen: (link) async {
+          if (link is MentionElement) {
+            // Handle @mention tap
+            debugPrint('Mention tapped: ${link.mention}');
+            final mentionName = link.mention.substring(
+              1,
+            ); // remove first char (@ or #)
+
+            if (widget.answerName != null && mentionName == widget.answerName) {
+              await widget.mentionLinkClick('answer', null, null);
+              return;
+            }
+            final mentionData = widget.mentionsList.firstWhereOrNull(
+              (m) => m.username == mentionName,
+            );
+            if (mentionData != null) {
+              final ref = getRef(mentionData); // build DocumentReference
+              if (mentionData.type == 'user') {
+                await widget.mentionLinkClick('user', ref, null);
+              } else if (mentionData.type == 'company') {
+                await widget.mentionLinkClick('company', null, ref);
+              }
+              return;
+            }
+
+            debugPrint(
+              'Mention not found in answer or mentionsList: $mentionName',
+            );
+          } else {
+            // Handle URL or email
+            await openUrl(link.url);
+          }
+        },
+      ),
+    );
+  }
+
+  DocumentReference? getRef(MentionDataStruct mention) {
+    if (mention.collectionName != null && mention.docId != null) {
+      return FirebaseFirestore.instance
+          .collection(mention.collectionName!)
+          .doc(mention.docId!);
+    }
+    return null;
+  }
+
+  String formatUrl(String url) {
+    if (!url.startsWith(RegExp(r'https?://'))) {
+      return 'https://$url';
+    }
+    return url;
+  }
+
+  Future<void> openUrl(String url) async {
+    final formattedUrl = formatUrl(url);
+    try {
+      final launched = await launchUrlString(
+        formattedUrl,
+        mode: LaunchMode.externalApplication,
+      );
+      if (!launched) debugPrint('Could not launch $formattedUrl');
+    } catch (e) {
+      debugPrint('Error launching $formattedUrl: $e');
+    }
+  }
+}
+
+/// Custom LinkElement for @mentions
+class MentionElement extends LinkableElement {
+  final String mention;
+  MentionElement(this.mention)
+      : super(mention, mention); // Pass both text & url
+}
+
+/// Custom Linkifier for @mentions
+class MentionLinkifier extends Linkifier {
+  const MentionLinkifier();
+
+  @override
+  List<LinkifyElement> parse(
+    List<LinkifyElement> elements,
+    LinkifyOptions options,
+  ) {
+    final result = <LinkifyElement>[];
+
+    for (final element in elements) {
+      if (element is TextElement) {
+        // Updated regex to support unicode letters
+        final regex = RegExp(r'([@#][\p{L}\p{N}_\.]+)', unicode: true);
+        int start = 0;
+
+        for (final match in regex.allMatches(element.text)) {
+          if (match.start > start) {
+            result.add(TextElement(element.text.substring(start, match.start)));
+          }
+          result.add(MentionElement(match.group(0)!));
+          start = match.end;
+        }
+
+        if (start < element.text.length) {
+          result.add(TextElement(element.text.substring(start)));
+        }
+      } else {
+        result.add(element);
+      }
+    }
+
+    return result;
+  }
+}
