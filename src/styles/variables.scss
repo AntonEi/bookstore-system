@@ -1,0 +1,67 @@
+/* ===== BRAND COLORS ===== */
+
+$color-orange: #B0894F;      // warm antique gold accent
+$color-light-blue: #3F7D6B;  // deep library green
+$color-yellow: #D6B86C;      // muted gold
+$color-danger: #8B3A46;      // wine red
+
+$color-dark-blue: #1E2933;   // dark slate background
+
+$color-gray-light: #F6F4EE;  // parchment light
+$color-gray-mid: #E8E5DD;    // paper tone
+
+
+
+/* ===== UI SEMANTIC TOKENS ===== */
+
+$color-bg-primary: $color-dark-blue;
+
+$color-bg-card: linear-gradient(
+    145deg,
+    #27323C,
+    #1E2933
+);
+
+$color-text-head: #2C3E50;
+$color-text-primary: #ffffff;
+$color-text-secondary: #b0bac5;
+
+$color-success: $color-light-blue;
+$color-warning: $color-yellow;
+$color-accent: $color-danger;
+
+
+/* ===== STATUS COLORS ===== */
+
+$color-status-sick: $color-accent;
+$color-status-vab: $color-accent;
+
+$color-status-vacation: $color-warning;
+$color-status-remote: #3b82f6;
+
+$color-status-work: $color-light-blue;
+$color-status-onsite: $color-success;
+
+
+/* ===== BORDERS ===== */
+
+$border-color: rgba(255, 255, 255, 0.08);
+
+
+/* ===== SHADOW ===== */
+
+$shadow-card: 0 6px 24px rgba(0, 0, 0, 0.35);
+
+
+/* ===== RADIUS ===== */
+
+$radius-md: 12px;
+$radius-sm: 8px;
+
+
+/* ===== SPACING ===== */
+
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;

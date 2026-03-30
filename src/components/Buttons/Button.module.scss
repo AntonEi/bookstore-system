@@ -1,0 +1,116 @@
+@use '../../styles/variables' as *;
+
+.button {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.12s ease;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* PRIMARY */
+
+.primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    border-color: #1e40af;
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.28);
+  }
+}
+
+/* SECONDARY */
+
+.secondary {
+  background: #eef4ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+
+  &:hover:not(:disabled) {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #1e40af;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+  }
+}
+
+/* OUTLINE */
+
+.outline {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #334155;
+
+  &:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    color: #0f172a;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  }
+}
+
+/* FULL WIDTH */
+
+.fullWidth {
+  width: 100%;
+}
+
+/* BUTTONS INSIDE CARDS / LIGHT PANELS */
+
+.primaryInCard {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+  border-color: #047857;
+  box-shadow: 0 8px 18px rgba(5, 150, 105, 0.2);
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+    border-color: #065f46;
+    box-shadow: 0 12px 24px rgba(5, 150, 105, 0.26);
+  }
+}
+
+.secondaryInCard {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+
+  &:hover:not(:disabled) {
+    background: #d1fae5;
+    border-color: #6ee7b7;
+    color: #065f46;
+    box-shadow: 0 6px 16px rgba(5, 150, 105, 0.12);
+  }
+}

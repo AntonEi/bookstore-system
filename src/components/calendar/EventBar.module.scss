@@ -1,0 +1,86 @@
+@use '../../styles/variables' as *;
+
+.bar {
+  position: absolute;
+  top: 8px;
+  height: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.16);
+  box-sizing: border-box;
+}
+
+.bar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.28);
+}
+
+.compact {
+  font-size: 11px;
+  padding: 0 10px;
+}
+
+.default {
+  font-size: 13px;
+}
+
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+}
+
+.handleLeft {
+  left: 0;
+}
+
+.handleRight {
+  right: 0;
+}
+
+.handleBar {
+  width: 2px;
+  height: 58%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 10px 12px;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.22);
+  font-size: 12px;
+  min-width: 220px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.tooltipRow {
+  margin-bottom: 6px;
+}
+
+.tooltipStrong {
+  font-weight: 700;
+  margin-bottom: 6px;
+}

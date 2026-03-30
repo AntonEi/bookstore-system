@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  display: grid;
+  border-bottom: 1px solid #dde3ec;
+  height: 58px;
+  align-items: center;
+  background: #f8fafc;
+}
+
+.cell {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.05;
+  position: relative;
+  color: #334155;
+}
+
+.today {
+  color: #059669;
+  font-weight: 700;
+}
+
+.date {
+  font-weight: 700;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.weekday {
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 4px;
+  color: #64748b;
+}

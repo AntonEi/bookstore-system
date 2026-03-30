@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import Calendar from "./pages/Absence/Calendar";
+import Books from "./pages/Absence/Books";
 
 function App() {
+
+  const [view, setView] = React.useState("calendar");
+
+  const handleNavigate = (v: string) => {
+    setView(v);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Ser du det jag ser?
-        </a>
-      </header>
+
+      {view === "calendar" && (
+        <Calendar onNavigate={handleNavigate} />
+      )}
+
+      {view === "books" && (
+        <Books onNavigate={handleNavigate} />
+      )}
+
     </div>
   );
 }
